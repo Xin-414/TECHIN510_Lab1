@@ -45,12 +45,17 @@ orders — replacing the current Google Form + Excel workflow.
 
 ## Project Structure
 
-techin510-week1/
-├── app.py            # Main Streamlit application
-├── requirements.txt  # Python dependencies
-├── .gitignore        # Files excluded from Git
-├── README.md         # This file
-└── requests.csv      # Auto-generated when first request is submitted
+TECHIN510_Lab1/
+├── lab1\        
+│   ├── app.py
+│   ├── requirements.txt
+│   ├── .gitignore
+│   └── requests.csv
+│
+└── lab1-wayfinder\ 
+    ├── app.py
+    ├── requirements.txt
+    └── .venv\
 
 ## Developer
 
