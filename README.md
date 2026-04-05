@@ -45,17 +45,19 @@ orders — replacing the current Google Form + Excel workflow.
 
 ## Project Structure
 
+```
 TECHIN510_Lab1/
-├── lab1\        
+├── lab1/
 │   ├── app.py
 │   ├── requirements.txt
 │   ├── .gitignore
 │   └── requests.csv
 │
-└── lab1-wayfinder\ 
+└── lab1-wayfinder/
     ├── app.py
     ├── requirements.txt
-    └── .venv\
+    └── .venv/
+```
 
 ## Developer
 
