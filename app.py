@@ -17,7 +17,7 @@ import streamlit as st
 CSV_PATH = Path(__file__).resolve().parent / "requests.csv"
 
 # About page — set your name for the assignment / portfolio.
-DEVELOPER_NAME = "Your Name"
+DEVELOPER_NAME = "Xin Luo"
 DEVELOPER_COURSE = "TECHIN 510 · University of Washington Global Innovation Exchange (GIX)"
 
 COLUMNS = [
@@ -282,7 +282,7 @@ def page_about() -> None:
     )
     st.markdown(
         f"- **GIX website:** [gix.uw.edu](https://www.gix.uw.edu)\n"
-        f"- **Developer:** Xin Luo\n"
+        f"- **Developer:** {DEVELOPER_NAME}\n"
         f"- **Course:** {DEVELOPER_COURSE}"
     )
 
