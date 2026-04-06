@@ -154,51 +154,56 @@ assert all("name" in r and "category" in r and "location" in r
 st.set_page_config(page_title="GIX Campus Wayfinder", layout="wide")
 
 st.title("GIX Campus Wayfinder")
-st.caption("Find makerspace gear, study spots, printing, storage, food, and services on campus.")
 
 st.header("Filters")
 
 search_query = st.text_input(
     "Search",
-    placeholder="Filter by name or description…",
-    help="Matches anywhere in the resource name or description.",
+    placeholder="Search by name or description…",
+    help="Matches text in the resource name or description.",
 )
 selected_categories = st.multiselect(
-    "Categories",
+    "Category",
     options=CATEGORIES,
     default=CATEGORIES,
     help="Show resources in any of the selected categories.",
 )
 free_only = st.checkbox("Show only free resources", value=False)
 
-# Real-time filtering: Streamlit reruns on each widget change.
 q = search_query.strip().lower()
 filtered = []
 for r in resources:
     if q and q not in r["name"].lower() and q not in r["description"].lower():
         continue
-    if not selected_categories or r["category"] not in selected_categories:
+    if selected_categories and r["category"] not in selected_categories:
         continue
     if free_only and not r["free"]:
         continue
     filtered.append(r)
 
 st.header("Results")
+
 count = len(filtered)
-st.metric("Matching resources", count)
+st.metric("Matching results", count)
 
 if count == 0:
     st.info(
-        "No resources match your filters. Try clearing the search text, selecting "
-        "more categories in the multiselect, or unchecking “Show only free resources.”"
+        "No resources found. Try a different search term or category."
     )
 else:
     for r in filtered:
         with st.expander(r["name"], expanded=False):
-            st.subheader(r["name"])
-            st.write(f"**Category:** {r['category']}")
-            st.write(f"**Location:** {r['location']}")
-            st.write(f"**Hours:** {r['hours']}")
-            st.write(f"**Description:** {r['description']}")
-            st.write(f"**Free to use:** {'Yes' if r['free'] else 'No'}")
-            st.write(f"**Tips:** {r['tips']}")
+            st.subheader("Name")
+            st.write(r["name"])
+            st.subheader("Category")
+            st.write(r["category"])
+            st.subheader("Location")
+            st.write(r["location"])
+            st.subheader("Hours")
+            st.write(r["hours"])
+            st.subheader("Description")
+            st.write(r["description"])
+            st.subheader("Free")
+            st.write("Yes" if r["free"] else "No")
+            st.subheader("Tips")
+            st.write(r["tips"])
